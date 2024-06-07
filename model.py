@@ -9,13 +9,16 @@ training_dataset = pd.read_csv("ML_Data_Set.csv")
 player_ids = pd.read_csv("Player keys.csv")
 
 team1_players = ['Mike', 'Jake', 'Rob', 'Rahul', 'Paddy', 'Shyam', 'Mani']
-team2_players = ['Kal', 'Jamie', 'Sam', 'Rahul', 'Kam', 'Omar', 'Waq']
+team2_players = ['Kal', 'Jamie', 'Sam', 'Saeed', 'Kam', 'Omar', 'Waq']
 
 test_dataset = f2.create_testdataset(team1_players, team2_players, player_ids)
 
 processed_training_dataset, processed_testing_dataset = f1.process_dataset(training_dataset, test_dataset)
 
 print("below is training dataset")
+print(processed_training_dataset)
+
+print("below is the test data set")
 print(processed_testing_dataset)
 
 team1_goals, team2_goals, team1_win, team1_win_prob, team2_win_prob = f2.train_test_models(processed_training_dataset, processed_testing_dataset)

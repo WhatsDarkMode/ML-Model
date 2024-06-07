@@ -9,13 +9,13 @@ def create_testdataset(team1_players, team2_players, player_id_csv):
     
     match_data = pd.DataFrame(columns=['Match ID'] + [f'Team {i+1} P{j+1}' for i in range(2) for j in range(8)] +
                                         ['Team 1 Goals', 'Team 2 Goals', 'Team 1 Result', 'Team 2 Result'])
-
+    # put player names into columns
     for team_name, players in zip(['Team 1', 'Team 2'], [team1_players, team2_players]):
         for i, player in enumerate(players):
             match_data.at[0, f'{team_name} P{i+1}'] = player
 
     match_data.fillna(0, inplace=True)
-
+    # put actual player IDs into columns
     for column in match_data.columns:
         if column.startswith('Team 1 P') or column.startswith('Team 2 P'):
             match_data[column] = match_data[column].apply(lambda x: player_id_dict.get(x, 0))
@@ -42,9 +42,8 @@ def predict_outcomes(processed_test_dataset, model):
     team2_win_prob = 1 - team1_win_prob
 
     team1_win = (team1_win_prob > 0.5).astype(int)
-    #draw = (team1_goals == team2_goals).astype(int)
     
-    return team1_goals, team2_goals, team1_win, team1_win_prob, team2_win_prob #, draw
+    return team1_goals, team2_goals, team1_win, team1_win_prob, team2_win_prob
 
 def train_test_models(processed_training_dataset, processed_test_dataset):
     model = training_model(processed_training_dataset)
