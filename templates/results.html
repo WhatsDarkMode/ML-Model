@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Match Results</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        body {
+            background-color: #121212;
+            color: #e0e0e0;
+        }
+        .container {
+            margin-top: 50px;
+        }
+        .card {
+            background-color: #1e1e1e;
+            color: #e0e0e0;
+            padding: 20px;
+            margin-top: 20px;
+            border: none;
+        }
+        .card-title {
+            color: #00bfff;
+            text-decoration: underline;
+        }
+        .result-header {
+            font-weight: bold;
+        }
+        .btn-primary {
+            background-color: #007bff;
+            border-color: #007bff;
+        }
+        .btn-primary:hover {
+            background-color: #0056b3;
+            border-color: #0056b3;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="card">
+            <div class="card-body">
+                <h3 class="card-title">Match Results</h3>
+                <div class="result-header">
+                    <p>Team 1 Goals: {{ team1_goals }}</p>
+                    <p>Team 2 Goals: {{ team2_goals }}</p>
+                    <p>Team 1 Win Probability: {{ team1_win_prob }}%</p>
+                    <p>Team 2 Win Probability: {{ team2_win_prob }}%</p>
+                </div>
+                <h4 class="card-text">
+                    Predicted Result: {{ 'Team 1 Wins' if team1_win else 'Team 2 Wins' }}
+                </h4>
+                <a href="/" class="btn btn-primary btn-block">Back to Home</a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Bootstrap JS, Popper.js, and jQuery -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.2/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>
